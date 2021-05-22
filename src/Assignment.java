@@ -19,28 +19,27 @@ import java.util.Scanner;
 public class Assignment {
     public static void main(String[] args) throws Exception {
 
-        //Running the program continously
-        //To quit enter 'q' to stop the program
+       
 
-        while (true) {
-        //initializing the variables
-            String outputUnit = "";
-            double finalValue = 0.0;
-
+        // Running the program continously
+        // To quit enter 'q' to stop the program
+        // initializing the variables
+        String outputUnit = "";
+        double finalValue = 0.0;
+        String inputUnit;
+        double inputvalue;
+        do {
+ // Taking user input of int value
+ Scanner inputScannerValue = new Scanner(System.in);
+ 
             System.out.println("Enter an Integer value to convert: ");
-            
-            //Taking user input of int value
-            Scanner inputScannerValue = new Scanner(System.in);
 
-            //assigning the input from the user to the double variable
-            double inputvalue = inputScannerValue.nextInt();
-
+            // assigning the input from the user to the double variable
+            inputvalue = inputScannerValue.nextInt();
+            inputScannerValue.nextLine();
             System.out.println("Enter the current unit of measure: ");
 
-            Scanner unitScannerValue = new Scanner(System.in);
-
-            String inputUnit = unitScannerValue.next();
-            
+            inputUnit = inputScannerValue.next();
 
             if (inputUnit.equals("km")) {
                 finalValue = inputvalue * 0.62;
@@ -81,13 +80,18 @@ public class Assignment {
             } else {
 
             }
-            if (finalValue == 0) {
-                System.out.println("The unit is not available!");
-            } else {
-                System.out.println(inputvalue + inputUnit + " is equal to " + finalValue + outputUnit);
+            System.out.println(inputvalue + inputUnit + " is equal to " + finalValue + outputUnit);
+            // if (finalValue == 0) {
+            //     System.out.println("The unit is not available!");
+            // } else {
+            //     System.out.println(inputvalue + inputUnit + " is equal to " + finalValue + outputUnit);
 
-            }
+            // }
 
         }
+
+        while (
+            inputvalue != 0 && 
+            !inputUnit.contains("cup") && !inputUnit.contains("L") && finalValue != 0);
     }
 }
