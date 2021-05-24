@@ -1,5 +1,3 @@
-//Add comments...Format code....Verify values
-
 /*
 -----------------Readme--------------------
 Student Name- Aakash Sadnani
@@ -19,28 +17,34 @@ import java.util.Scanner;
 public class Assignment {
     public static void main(String[] args) throws Exception {
 
-       
-
         // Running the program continously
         // To quit enter 'q' to stop the program
         // initializing the variables
         String outputUnit = "";
         double finalValue = 0.0;
-        String inputUnit;
-        double inputvalue;
+        String inputUnit = "";
+        double inputvalue = 0;
         do {
- // Taking user input of int value
- Scanner inputScannerValue = new Scanner(System.in);
- 
+            // Defining a scanner for taking inputs from user
+            Scanner inputScannerValue = new Scanner(System.in);
+
             System.out.println("Enter an Integer value to convert: ");
 
             // assigning the input from the user to the double variable
-            inputvalue = inputScannerValue.nextInt();
+            inputvalue = inputScannerValue.nextDouble();
+
+            // skipping the next line due to nextDouble
             inputScannerValue.nextLine();
+
+            // printing the message for users input measurement unit type
             System.out.println("Enter the current unit of measure: ");
 
+            // assigning the input value to a string variable
             inputUnit = inputScannerValue.next();
 
+            // using if else we check the inputunit of user and compare with standard units
+            // the
+            // code can accept
             if (inputUnit.equals("km")) {
                 finalValue = inputvalue * 0.62;
                 outputUnit = "mi";
@@ -65,33 +69,35 @@ public class Assignment {
             } else if (inputUnit.equals("oz")) {
                 finalValue = inputvalue * 28.35;
                 outputUnit = "g";
-            } else if (inputUnit.equals("C")) {
+            } else if (inputUnit.equals("C") || inputUnit.equals("c")) {
                 finalValue = ((inputvalue * 9) / 5) + 32;
                 outputUnit = "F";
-            } else if (inputUnit.equals("F")) {
+            } else if (inputUnit.equals("F") || inputUnit.equals("f")) {
                 finalValue = (inputvalue - 32) * 5 / 9;
                 outputUnit = "C";
-            } else if (inputUnit.equals("L")) {
+            } else if (inputUnit.equals("L") || inputUnit.equals("l")) {
                 finalValue = inputvalue * 4.17;
                 outputUnit = "cups";
             } else if (inputUnit.equals("cup")) {
                 finalValue = inputvalue * 0.24;
                 outputUnit = "L";
             } else {
-
+                // If input unit is not availabe then printing error message
+                System.out.println("InputUnit error!");
+                break;
             }
+
+            // Printing the output of the calculation
             System.out.println(inputvalue + inputUnit + " is equal to " + finalValue + outputUnit);
-            // if (finalValue == 0) {
-            //     System.out.println("The unit is not available!");
-            // } else {
-            //     System.out.println(inputvalue + inputUnit + " is equal to " + finalValue + outputUnit);
+            // printing a new line to give space between lines
+            System.out.println("\n");
 
-            // }
-//
         }
-
-        while (
-            inputvalue != 0 && 
-            !inputUnit.contains("cup") && !inputUnit.contains("L") && finalValue != 0);
+        // checking for condition
+        // finalValue must not be 0 and inputvalue must not be 0
+        // otherwise the looping will break and program will stop
+        while (inputvalue != 0 && outputUnit != "");
+        // printing the error if user enters 0 in input or finalValue is 0
+        System.out.println("The unit is not available or input value 0 is not acceptable!");
     }
 }
