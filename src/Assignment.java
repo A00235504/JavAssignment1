@@ -25,7 +25,9 @@ public class Assignment {
         String outputUnit = "";
         double finalValue = 0.0;
         String inputUnit = "";
-        short inputValue = 0;
+        String inputValue = "";
+        double inputnumber = 0;
+       
         do {
             // Defining a scanner for taking inputs from user
             Scanner inputScannerValue = new Scanner(System.in);
@@ -33,56 +35,52 @@ public class Assignment {
             System.out.println("Enter an Integer value to convert: ");
 
             // assigning the input from the user to the double variable
-            inputValue = inputScannerValue.nextShort();
+            inputValue = inputScannerValue.nextLine();
 
-            // skipping the next line due to nextDouble
-            inputScannerValue.nextLine();
+            String[] st = inputValue.split(" ", 3);
+       
+            System.out.println(st[0]);
+            System.out.println(st[1]);
+        
+            inputUnit = st[1];
+            inputnumber = Double.parseDouble(st[0]);
 
-            // printing the message for users input measurement unit type
-            System.out.println("Enter the current unit of measure: ");
-
-            // assigning the input value to a string variable
-            inputUnit = inputScannerValue.next();
-
-            // using if else we check the inputunit of user and compare with standard units
-            // the
-            // code can accept
             
             if (inputUnit.equals("km")) {
-                finalValue = inputValue * 0.62;
+                finalValue = inputnumber * 0.62;
                 outputUnit = "mi";
             } else if (inputUnit.equals("mi")) {
-                finalValue = inputValue * 1.61;
+                finalValue = inputnumber * 1.61;
                 outputUnit = "km";
             } else if (inputUnit.equals("cm")) {
-                finalValue = inputValue * 0.39;
+                finalValue = inputnumber * 0.39;
                 outputUnit = "in";
             } else if (inputUnit.equals("in")) {
-                finalValue = inputValue * 2.54;
+                finalValue = inputnumber * 2.54;
                 outputUnit = "cm";
             } else if (inputUnit.equals("kg")) {
-                finalValue = inputValue * 2.2;
+                finalValue = inputnumber * 2.2;
                 outputUnit = "lb";
             } else if (inputUnit.equals("lb")) {
-                finalValue = inputValue * 0.45;
+                finalValue = inputnumber * 0.45;
                 outputUnit = "kg";
             } else if (inputUnit.equals("g")) {
-                finalValue = inputValue * 0.4;
+                finalValue = inputnumber * 0.4;
                 outputUnit = "oz";
             } else if (inputUnit.equals("oz")) {
-                finalValue = inputValue * 28.35;
+                finalValue = inputnumber * 28.35;
                 outputUnit = "g";
             } else if (inputUnit.equals("C") || inputUnit.equals("c")) {
-                finalValue = ((inputValue * 9) / 5) + 32;
+                finalValue = ((inputnumber * 9) / 5) + 32;
                 outputUnit = "F";
             } else if (inputUnit.equals("F") || inputUnit.equals("f")) {
-                finalValue = (inputValue - 32) * 5 / 9;
+                finalValue = (inputnumber - 32) * 5 / 9;
                 outputUnit = "C";
             } else if (inputUnit.equals("L") || inputUnit.equals("l")) {
-                finalValue = inputValue * 4.17;
+                finalValue = inputnumber * 4.17;
                 outputUnit = "cups";
             } else if (inputUnit.equals("cup")) {
-                finalValue = inputValue * 0.24;
+                finalValue = inputnumber * 0.24;
                 outputUnit = "L";
             } else {
                 // If input unit is not availabe then printing error message
@@ -91,7 +89,7 @@ public class Assignment {
             }
 
             // Printing the output of the calculation
-            System.out.println(inputValue + inputUnit + " is equal to " + finalValue + outputUnit);
+            System.out.println(inputValue + " is equal to " + finalValue + outputUnit);
             // printing a new line to give space between lines
             System.out.println("\n");
 
@@ -99,7 +97,7 @@ public class Assignment {
         // checking for condition
         // finalValue must not be 0 and inputValue must not be 0
         // otherwise the looping will break and program will stop
-        while (inputValue != 0 && outputUnit != "");
+        while (inputnumber != 0  && outputUnit != "");
         // printing the error if user enters 0 in input or finalValue is 0
         System.out.println("The unit is not available or input value 0 is not acceptable!");
     }
