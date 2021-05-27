@@ -10,6 +10,8 @@ Program Description - This program is written to convert between various types o
 3) Arithmatic calculations will determine the output
 4) After calculations the output will be displayed to the user on the terminal console.
 -----------------x------------------------
+
+This is a new branch for checking inputs with int and string
 */
 
 import java.util.Scanner;
